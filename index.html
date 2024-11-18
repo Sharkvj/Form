@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="new.css" />
+    <style>
+      .form-input {
+        margin-bottom: 10px;
+      }
+      .errormessage {
+        color: red;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      name="ContactForm"
+      method="post"
+      action="welcome_get.php"
+      onsubmit="return validateForm(this)"
+    >
+      <!-- Existing Fields -->
+      <div class="form-input">
+        <label for="FirstName">First Name*</label>
+        <input
+          id="FirstName"
+          type="text"
+          name="FirstName"
+          value=""
+          oninput="validateName(this, 'First Name')"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div class="form-input">
+        <label for="LastName">Last Name*</label>
+        <input
+          id="LastName"
+          type="text"
+          name="LastName"
+          value=""
+          oninput="validateName(this, 'Last Name')"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div class="form-input">
+        <label for="Email">Email*</label>
+        <input
+          id="Email"
+          type="email"
+          name="Email"
+          value=""
+          oninput="validateEmail(this, 'Email')"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+      <div class="form-input">
+        <label for="Phone">Phone*</label>
+        <input
+          id="Phone"
+          type="phone"
+          name="Phone"
+          value=""
+          oninput="validatePhone(this, 'Phone')"
+          onkeypress="handleKeyPress(event)"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <!-- New Password Field -->
+      <div class="form-input">
+        <label for="Password">Password*</label>
+        <input
+          id="Password"
+          type="password"
+          name="Pass_word"
+          value=""
+          style="
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+          "
+          oninput="validatePassword(this)"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <!-- New Confirm Password Field -->
+      <div class="form-input">
+        <label for="ConfirmPassword">Confirm Password*</label>
+        <input
+          id="ConfirmPassword"
+          type="password"
+          name="ConfirmPassword"
+          value=""
+          style="
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+          "
+          oninput="validateConfirmPassword(this)"
+        />
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div class="form-input">
+        <label>Country*</label>
+        <select name="Country" onchange="validateSelect(this)">
+          <option value="">Select your country</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="India">India</option>
+        </select>
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <!-- Rest of the Fields -->
+      <div class="form-input">
+        <label>Interests*</label>
+        <div>
+          <label
+            ><input
+              type="checkbox"
+              name="Interests"
+              value="Reading"
+              onchange="validateCheckboxGroup()"
+            />
+            Reading</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="Interests"
+              value="Traveling"
+              onchange="validateCheckboxGroup()"
+            />
+            Traveling</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="Interests"
+              value="Sports"
+              onchange="validateCheckboxGroup()"
+            />
+            Sports</label
+          >
+        </div>
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div class="form-input">
+        <label>Preferred Contact Method*</label>
+        <div>
+          <label
+            ><input
+              type="radio"
+              name="ContactMethod"
+              value="Email"
+              onchange="validateRadioGroup()"
+            />
+            Email</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="ContactMethod"
+              value="Phone"
+              onchange="validateRadioGroup()"
+            />
+            Phone</label
+          >
+        </div>
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div class="form-input">
+        <label for="Comments">Comments</label>
+        <textarea
+          id="Comments"
+          name="Comments"
+          rows="4"
+          cols="50"
+          oninput="validateTextArea(this, 'Comments')"
+          placeholder="Your comments here..."
+        ></textarea>
+        <p class="errormessage">&nbsp;</p>
+      </div>
+
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+
+      <div>
+        <p>Already Registered? <a href="login.html">login </a></p>
+      </div>
+    </form>
+    <script src="new.js"></script>
+  </body>
+</html>
